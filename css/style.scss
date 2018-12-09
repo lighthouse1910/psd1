@@ -1,3 +1,5 @@
+@import 'variable';
+
 html {
   width: 100%;
   height: auto;
@@ -18,17 +20,20 @@ html {
   }
 }
 // global use
+.page-container {
+  padding: 4% 0;
+}
 .button-default {
-  background-color: #998675;
+  background-color: $button-bgcolor;
   text-transform: uppercase;
-  color: #fff;
+  color: $button-txtcolor;
   font-size: 1.4rem;
   font-weight: 800;
   text-align: center;
   border: 0;
   outline: 0;
   cursor: pointer;
-  box-shadow: 0 3px 0 1px #736357;
+  box-shadow: 0 3px 0 1px $button-boxshadow;
   padding: 15px 28px;
   border-radius: 8px;
   transition: all 0.3s ease-out;
@@ -49,7 +54,7 @@ nav {
       &:hover,
       &:focus {
         a.nav-link {
-          color: #c7b299;
+          color: $primary-txtcolor-hover;
         }
       }
       a.nav-link {
@@ -62,17 +67,33 @@ nav {
 .banner-top {
   height: 100vh;
   width: 100%;
+  position: relative;
+  .image-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: inherit;
+    height: inherit;
+  }
+  .image-overlay {
+    width: inherit;
+    height: inherit;
+    background-color: #000;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  nav {
+    width: 100%;
+  }
   .one-slide--item {
     position: relative;
-    height: 100vh;
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      height: 100vh;
-    }
+    display: block;
+    height: calc(100vh - 100px);
+    width: inherit;
     &__content {
       position: absolute;
       top: 50%;
@@ -80,14 +101,20 @@ nav {
       transform: translate(-50%, -50%);
       color: #fff;
       h4 {
-        font-size: 3.6rem;
+        font-size: 2rem;
         font-weight: 500;
         margin-bottom: 15px;
+        @media (min-width: 768px) {
+          font-size: 3.6rem;
+        }
       }
       h3 {
-        font-size: 5.2rem;
+        font-size: 2.8rem;
         font-weight: 900;
-        margin-bottom: 25px;
+        margin-bottom: 2.5rem;
+        @media (min-width: 768px) {
+          font-size: 5.2rem;
+        }
       }
       p {
         font-size: 1.6rem;
@@ -175,4 +202,40 @@ nav {
       right: 7.5%;
     }
   }
+}
+.widget {
+  .widget-item {
+    color: $title-txtcolor;
+    text-align: center;
+    &:hover {
+      color: $primary-txtcolor-hover;
+      hr {
+        border-top-color: $primary-txtcolor-hover;
+      }
+    }
+    .widget--icon {
+      font-size: 50px;
+    }
+    .widget--title {
+      margin: 30px 0 20px;
+      h4 {
+        font-size: 2.2rem;
+        font-weight: 600;
+      }
+    }
+    .widget--content {
+      color: $secondary-txtcolor;
+      font-weight: 400;
+    }
+    hr {
+      width: 7rem;
+      border-top: 5px solid $hr-color;
+    }
+  }
+}
+
+.browser {
+  background-color: $secondary-bgcolor;
+  width: 100%;
+  height: auto;
 }
